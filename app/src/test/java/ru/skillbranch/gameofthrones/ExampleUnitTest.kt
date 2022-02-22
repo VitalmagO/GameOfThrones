@@ -1,4 +1,4 @@
-package com.example.gameofthrones
+package ru.skillbranch.gameofthrones
 
 import org.junit.Test
 
