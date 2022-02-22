@@ -100,7 +100,8 @@ class ExampleInstrumentedTest {
         books = emptyList(),
         povBooks = emptyList(),
         tvSeries = emptyList(),
-        playedBy = listOf("Kit Harington")
+        playedBy = listOf("Kit Harington"),
+        houseId = ""
     )
 
     private val stubCharacterRhaegar = CharacterRes(
@@ -126,7 +127,8 @@ class ExampleInstrumentedTest {
         books = emptyList(),
         povBooks = emptyList(),
         tvSeries = emptyList(),
-        playedBy = emptyList()
+        playedBy = emptyList(),
+        houseId = ""
     )
 
     private val stubCharacterLyanna = CharacterRes(
@@ -149,7 +151,8 @@ class ExampleInstrumentedTest {
         books = emptyList(),
         povBooks = emptyList(),
         tvSeries = emptyList(),
-        playedBy = emptyList()
+        playedBy = emptyList(),
+        houseId = ""
     )
 
     @Test
