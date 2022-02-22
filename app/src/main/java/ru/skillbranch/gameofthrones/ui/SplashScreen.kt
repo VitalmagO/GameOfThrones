@@ -1,11 +1,12 @@
-package ru.skillbranch.gameofthrones
+package ru.skillbranch.gameofthrones.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import ru.skillbranch.gameofthrones.R
 
-class MainActivity : AppCompatActivity() {
+class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splashscreen)
     }
 }
