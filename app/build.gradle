@@ -38,9 +38,13 @@ dependencies {
 
     def support = '1.2.0'
     def rxjava2 = '2.2.2'
+    def rxandroid2 = '2.1.0'
     def rxjava3 = '3.0.0'
     def retrofit = '2.3.0'
+    def okHttp = '3.10.0'
+    def gson = '2.8.6'
     def room = '2.4.1'
+    def toothpick = '2.1.0'
 
     //core
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -50,17 +54,28 @@ dependencies {
 
     //rxjava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid2"
     implementation "io.reactivex.rxjava3:rxjava:$rxjava3"
+    //implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
 
-    //retrofit
+    //network
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okHttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$okHttp"
+    implementation "com.google.code.gson:gson:$gson"
 
     //room
     implementation "androidx.room:room-runtime:$room"
     implementation "androidx.room:room-ktx:$room"
     annotationProcessor "androidx.room:room-compiler:$room"
+
+    //toothpick
+    implementation "com.github.stephanenicolas.toothpick:toothpick-runtime:$toothpick"
+    implementation "com.github.stephanenicolas.toothpick:smoothie:$toothpick"
+    implementation "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpick"
 
 
     testImplementation 'junit:junit:4.13.2'
