@@ -1,6 +1,6 @@
-package ru.skillbranch.gameofthrones.data.remote.res
+package ru.skillbranch.gameofthrones.data.model.response
 
-data class CharacterRes(
+data class CharacterResponse(
     val url: String,
     val name: String,
     val gender: String,

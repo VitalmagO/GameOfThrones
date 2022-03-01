@@ -1,6 +1,9 @@
-package ru.skillbranch.gameofthrones.data.remote.res
+package ru.skillbranch.gameofthrones.data.model.response
 
-data class HouseRes(
+import androidx.annotation.Keep
+
+@Keep
+data class HouseResponse(
     val url: String,
     val name: String,
     val region: String,
