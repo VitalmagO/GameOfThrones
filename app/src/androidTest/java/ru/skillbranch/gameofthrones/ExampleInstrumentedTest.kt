@@ -4,11 +4,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-import ru.skillbranch.gameofthrones.data.local.entities.CharacterFull
-import ru.skillbranch.gameofthrones.data.local.entities.CharacterItem
-import ru.skillbranch.gameofthrones.data.remote.res.CharacterRes
-import ru.skillbranch.gameofthrones.data.remote.res.HouseRes
-import ru.skillbranch.gameofthrones.repositories.RootRepository
+import ru.skillbranch.gameofthrones.data.model.response.CharacterFull
+import ru.skillbranch.gameofthrones.data.model.response.CharacterItem
+import ru.skillbranch.gameofthrones.data.model.response.CharacterResponse
+import ru.skillbranch.gameofthrones.data.model.response.HouseResponse
+import ru.skillbranch.gameofthrones.data.repository.RootRepository
 
 
 /**
@@ -19,7 +19,7 @@ import ru.skillbranch.gameofthrones.repositories.RootRepository
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
 
-    private val stubHouseStark = HouseRes(
+    private val stubHouseStark = HouseResponse(
         url = "https://www.anapioficeandfire.com/api/houses/362",
         name = "House Stark of Winterfell",
         region = "The North",
@@ -46,7 +46,7 @@ class ExampleInstrumentedTest {
         )
     )
 
-    private val stubHouseTargaryen = HouseRes(
+    private val stubHouseTargaryen = HouseResponse(
         url = "https://www.anapioficeandfire.com/api/houses/378",
         name = "House Targaryen of King's Landing",
         region = "The Crownlands",
@@ -75,7 +75,7 @@ class ExampleInstrumentedTest {
         swornMembers = listOf("https://www.anapioficeandfire.com/api/characters/867")
     )
 
-    private val stubCharacterJonSnow = CharacterRes(
+    private val stubCharacterJonSnow = CharacterResponse(
         url = "https://www.anapioficeandfire.com/api/characters/583",
         name = "Jon Snow",
         gender = "Male",
@@ -104,7 +104,7 @@ class ExampleInstrumentedTest {
         houseId = ""
     )
 
-    private val stubCharacterRhaegar = CharacterRes(
+    private val stubCharacterRhaegar = CharacterResponse(
         url = "https://www.anapioficeandfire.com/api/characters/867",
         name = "Rhaegar Targaryen",
         gender = "Male",
@@ -131,7 +131,7 @@ class ExampleInstrumentedTest {
         houseId = ""
     )
 
-    private val stubCharacterLyanna = CharacterRes(
+    private val stubCharacterLyanna = CharacterResponse(
         url = "https://www.anapioficeandfire.com/api/characters/1650",
         name = "Lyanna Stark",
         gender = "Female",
@@ -285,7 +285,7 @@ class ExampleInstrumentedTest {
     fun get_all_houses() {
         //Запись персонажей
         val lock1 = Object()
-        var actualHouses: List<HouseRes>? = null
+        var actualHouses: List<HouseResponse>? = null
         RootRepository.getAllHouses {
             actualHouses = it
             synchronized(lock1) { lock1.notify() }
@@ -303,7 +303,7 @@ class ExampleInstrumentedTest {
     fun get_need_houses() {
         //Запись персонажей
         val lock1 = Object()
-        var actualHouses: List<HouseRes>? = null
+        var actualHouses: List<HouseResponse>? = null
         RootRepository.getNeedHouses(
             "House Greyjoy of Pyke",
             "House Tyrell of Highgarden"
@@ -323,7 +323,7 @@ class ExampleInstrumentedTest {
     @Test
     fun get_need_houses_with_characters() {
         val lock1 = Object()
-        var actualHouses: List<Pair<HouseRes, List<CharacterRes>>>? = null
+        var actualHouses: List<Pair<HouseResponse, List<CharacterResponse>>>? = null
         RootRepository.getNeedHouseWithCharacters(
             "House Greyjoy of Pyke"
         ) {
