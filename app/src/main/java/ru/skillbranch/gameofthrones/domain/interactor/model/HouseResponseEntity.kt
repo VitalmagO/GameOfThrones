@@ -1,8 +1,10 @@
 package ru.skillbranch.gameofthrones.domain.interactor.model
 
-data class HouseResModel(
+import java.io.Serializable
+
+class HouseResponseEntity(
     val url: String,
     val name: String,
     val region: String,
-    val coatOfArms: String,
-)
+    val coatOfArms: String
+) : Serializable
