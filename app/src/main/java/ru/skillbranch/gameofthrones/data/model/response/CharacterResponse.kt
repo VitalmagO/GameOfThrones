@@ -17,5 +17,4 @@ data class CharacterResponse(
     val povBooks: List<Any> = listOf(),
     val tvSeries: List<String> = listOf(),
     val playedBy: List<String> = listOf(),
-    var houseId: String
 )
