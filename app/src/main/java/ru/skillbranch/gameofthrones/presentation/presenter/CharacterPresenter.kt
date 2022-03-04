@@ -64,9 +64,7 @@ class CharacterPresenter : CharacterContract.Presenter() {
                 view.hideProgress()
             }
 
-            /*подписывает Observer на Observable
-            * принимает объект CoinGeckoApi, получающий данные от сервера вызовом функции getCoinMarket(),
-            * которая возврящяет Observable<List<CoinGecko>>*/
+//            подписывает Observer на Observable
             .subscribe({
                 view.hideProgress()
                 view.notifyAdapter()
