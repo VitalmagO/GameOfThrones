@@ -5,10 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fr_cryptocurrency_list.*
+import kotlinx.android.synthetic.main.fr_houses.*
 import ru.skillbranch.gameofthrones.presentation.view.adapter.BaseAdapter
 
-abstract class BaseListFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     protected lateinit var viewAdapter: BaseAdapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
