@@ -2,7 +2,7 @@ package ru.skillbranch.gameofthrones.presentation.contract
 
 import ru.skillbranch.gameofthrones.domain.interactor.model.CharacterEntity
 
-class CharacterContract {
+class HouseContract {
     interface View : BaseContract.View {
         fun addCharacters(character: CharacterEntity)
         fun notifyAdapter()

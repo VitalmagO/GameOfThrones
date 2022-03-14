@@ -4,25 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import ru.skillbranch.gameofthrones.presentation.contract.CharacterContract
-import kotlinx.android.synthetic.main.activity_splashscreen.*
+import kotlinx.android.synthetic.main.fr_house.*
+import ru.skillbranch.gameofthrones.presentation.contract.HouseContract
 import ru.skillbranch.gameofthrones.R
 import ru.skillbranch.gameofthrones.domain.interactor.model.CharacterEntity
-import ru.skillbranch.gameofthrones.presentation.presenter.CharacterPresenter
+import ru.skillbranch.gameofthrones.presentation.presenter.HousePresenter
 import ru.skillbranch.gameofthrones.presentation.view.adapter.BaseAdapter
 import ru.skillbranch.gameofthrones.presentation.view.adapter.CharacterAdapter
 
-class CharacterListFragment : BaseListFragment(), CharacterContract.View {
+class HouseFragment : BaseFragment(), HouseContract.View {
 
-    private var presenter: CharacterPresenter = CharacterPresenter()
+    private var presenter: HousePresenter = HousePresenter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fr_cryptocurrency_list, container, false)
+        return inflater.inflate(R.layout.fr_houses, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,13 +43,15 @@ class CharacterListFragment : BaseListFragment(), CharacterContract.View {
     }
 
     override fun showProgress() {
-        requireActivity().progress.visibility = View.VISIBLE
-        requireActivity().findViewById<ImageView>(R.id.myImage).visibility = View.VISIBLE
+//        requireActivity().appbar.visibility = ViewGroup.INVISIBLE
+//        requireActivity().progressBar.visibility = View.VISIBLE
+//        requireActivity().findViewById<ImageView>(R.id.myImage).visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        requireActivity().progress.visibility = View.INVISIBLE
-        requireActivity().findViewById<ImageView>(R.id.myImage).visibility = View.INVISIBLE
+//        requireActivity().appbar.visibility = ViewGroup.VISIBLE
+//        requireActivity().progressBar.visibility = View.INVISIBLE
+//        requireActivity().findViewById<ImageView>(R.id.myImage).visibility = View.INVISIBLE
     }
 
     override fun showErrorMessage(error: String?) {
