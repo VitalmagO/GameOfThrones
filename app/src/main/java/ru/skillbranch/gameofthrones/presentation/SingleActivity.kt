@@ -1,35 +1,36 @@
 package ru.skillbranch.gameofthrones.presentation
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import io.reactivex.Observable
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import ru.skillbranch.gameofthrones.*
-import ru.skillbranch.gameofthrones.data.cache.HouseRepositoryCache
-import ru.skillbranch.gameofthrones.data.mapper.FromResponseToEntityMapper
-import ru.skillbranch.gameofthrones.data.repository.Repository
-import ru.skillbranch.gameofthrones.domain.interactor.Interactor
-import ru.skillbranch.gameofthrones.domain.interactor.model.CharacterEntity
-import ru.skillbranch.gameofthrones.domain.interactor.model.HousesEntity
-import ru.skillbranch.gameofthrones.presentation.view.adapter.fragment.CharacterListFragment
+import ru.skillbranch.gameofthrones.presentation.view.adapter.fragment.HouseFragment
 
 
-class SplashScreen : AppCompatActivity() {
-
-//    private val api = App.getApi()
-//    private val cache = HouseRepositoryCache()
-//    private val repository: Repository = Repository(api, FromResponseToEntityMapper(), cache)
-//    private val interact: Interactor = Interactor(repository)
+class SingleActivity : AppCompatActivity() {
+    lateinit var navController : NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splashscreen)
+        setContentView(R.layout.activity_single)
+        savedInstanceState ?: prepareData()
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        navController.navigate(R.id.nav_splash)
+    }
 
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.container, CharacterListFragment(), null)
-                .commit()
+    private fun prepareData() {
+        if (!isNetworkAvailable(this)) {
+            TODO("Load data from SharedPref")
+            Toast.makeText(this, "Отсутствует интернет", Toast.LENGTH_LONG).show()
+        } else {
+            navController.navigate(R.id.action_nav_splash_to_nav_houses)
+//            supportFragmentManager
+//                .beginTransaction()
+//                .add(R.id.container, HouseFragment(), null)
+//                .commit()
         }
     }
 
