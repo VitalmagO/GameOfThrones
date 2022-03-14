@@ -33,6 +33,7 @@ class FromResponseToEntityMapper {
             CharacterEntity(
                 url = url,
                 name = name,
+                culture = culture,
                 born = born,
                 died = died,
                 titles = titles,
