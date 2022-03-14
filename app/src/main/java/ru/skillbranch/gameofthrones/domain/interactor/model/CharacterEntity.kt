@@ -5,6 +5,7 @@ import java.io.Serializable
 data class CharacterEntity(
     val url: String,
     val name: String,
+    val culture: String,
     val born: String,
     val died: String,
     val titles: List<String> = listOf(),

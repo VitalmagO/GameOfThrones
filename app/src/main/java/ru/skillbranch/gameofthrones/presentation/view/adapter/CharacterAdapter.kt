@@ -3,7 +3,8 @@ package ru.skillbranch.gameofthrones.presentation.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.recycler_view_item.view.*
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.rv_house_item.*
 import ru.skillbranch.gameofthrones.R
 import ru.skillbranch.gameofthrones.domain.interactor.model.CharacterEntity
 
@@ -12,25 +13,28 @@ class CharacterAdapter : BaseAdapter<CharacterAdapter.CharactersViewHolder>() {
     //создает ViewHolder и инициализирует views для списка
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_view_item, parent, false)
+            .inflate(R.layout.rv_house_item, parent, false)
         return CharactersViewHolder(v)
     }
 
     //реализация вьюхолдера
-    class CharactersViewHolder(view: View) : BaseAdapter.BaseViewHolder(view) {
-        var name: String = ""
-        var alieses: List<String> = listOf()
-        var born: String = ""
+    class CharactersViewHolder(view: View) : BaseAdapter.BaseViewHolder(view), LayoutContainer {
+        /**Обязательно реализовывать LayoutContainer для нормального кеширования, так как иначе убивается производительность
+        каждый раз обращаясь ко view*/
+        override val containerView: View
+            get() = view
 
         //привязываем элементы представления списка к RecyclerView и заполняем данными
         override fun bind(item: Any) {
             let {
                 item as CharacterEntity
-                view.ivCharacterIcon.setImageResource(R.drawable.lanister_icon)
-                view.tvCharacterName.text = item.name
-                view.tvCharacterAliases.text = item.aliases.toString()
-                view.tvCharacterBorn.text = item.born
+                ivCharacterIcon.setImageResource(R.drawable.lanister_icon)
+                tvCharacterName.text = item.name
+                tvCharacterCulture.text = getCulture(item.culture)
             }
         }
+
+        private fun getCulture(culture: String): String =
+            culture.ifEmpty { "Information unknown" }
     }
 }
